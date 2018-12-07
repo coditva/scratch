@@ -7,11 +7,11 @@ INC_DIR    = include
 
 all: $(TARGET)
 
-$(TARGET): $(TARGET).o $(INC_DIR)/*
+$(TARGET): $(TARGET).o
 	$(CC) $(CC_FLAGS) -o $@ $?
 
-$(TARGET).o: src/$(TARGET).cc
-	$(CC) -I$(INC_DIR) $(CC_FLAGS) -c $?
+$(TARGET).o: src/$(TARGET).cc $(INC_DIR)/*
+	$(CC) -I$(INC_DIR) $(CC_FLAGS) -c $<
 
 clean:
 	rm -rf $(TARGET) $(TARGET).o
