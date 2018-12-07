@@ -14,17 +14,17 @@ public:
         if (node->getValue() > root->getValue()) {
             if (root->right == nullptr) {
                 root->right = node;
+                node->setHeight(root->getHeight() + 1);
                 this->num_of_nodes++;
             } else {
-                root->incHeight(1);
                 this->addNode(node, root->right);
             }
         } else {
             if (root->left == nullptr) {
                 root->left = node;
+                node->setHeight(root->getHeight() + 1);
                 this->num_of_nodes++;
             } else {
-                root->incHeight(1);
                 this->addNode(node, root->left);
             }
         }
@@ -34,9 +34,9 @@ public:
     {
         if (this->root == nullptr) {
             this->root = node;
+            node->setHeight(0);
             this->num_of_nodes++;
         } else {
-            this->root->incHeight(1);
             this->addNode(node, this->root);
         }
     }
