@@ -1,6 +1,7 @@
 #ifndef TREE_H_I37DWHC8
 #define TREE_H_I37DWHC8
 
+#include <iostream>
 #include <queue>
 #include "Node.h"
 
@@ -8,7 +9,7 @@ template <class T = unsigned int>
 class Tree
 {
 public:
-    typedef void (Callback)(T);
+    typedef void (Callback)(Node<T> *);
 
     void doInOrder(Callback *callback)
     {
@@ -22,7 +23,7 @@ public:
         }
 
         doInOrder(node->left, callback);
-        callback(node->getValue());
+        callback(node);
         doInOrder(node->right, callback);
     }
 
@@ -37,7 +38,7 @@ public:
             return;
         }
 
-        callback(node->getValue());
+        callback(node);
         doPreOrder(node->left, callback);
         doPreOrder(node->right, callback);
     }
@@ -55,7 +56,7 @@ public:
 
         doPostOrder(node->left, callback);
         doPostOrder(node->right, callback);
-        callback(node->getValue());
+        callback(node);
     }
 
     void doLevelOrder(Callback *callback)
@@ -79,7 +80,8 @@ public:
             if (current_node->right) {
                 q.push(current_node->right);
             }
-            callback(current_node->getValue());
+            callback(current_node);
+            std::cout << current_node->balanceFactor << std::endl;
             q.pop();
         }
     }

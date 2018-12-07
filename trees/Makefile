@@ -1,5 +1,5 @@
 CC         = g++
-CC_FLAGS   = -std=c++0x
+CC_FLAGS   = -std=c++0x -g
 TARGET     = avl
 INC_DIR    = include
 

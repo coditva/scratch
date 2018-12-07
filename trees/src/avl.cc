@@ -1,22 +1,23 @@
 #include <iostream>
-#include "BTree.h"
+#include "AVLTree.h"
 
-void print(int val)
+void print(Node<int> *node)
 {
-    std::cout << val << ", ";
+    std::cout << node->getValue() << ", ";
 }
 
 int main(int argc, char *argv[])
 {
     int i = 0, n = 0;
-    void print(int val);
-    BTree<int> tree;
+    AVLTree<int> tree;
 
     std::cin >> n;
     for (i = 0; i < n; ++i) {
         int node;
         std::cin >> node;
         tree.addNode(new Node<int>(node));
+        tree.doLevelOrder(print);
+        std::cout << "---------" << std::endl;
     }
 
     std::cout << std::endl << "inorder:" << std::endl;

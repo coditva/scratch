@@ -12,6 +12,7 @@ public:
     void addNode(Node<T> *node, Node<T> *root)
     {
         if (node->getValue() > root->getValue()) {
+            root->balanceFactor++;
             if (root->right == nullptr) {
                 root->right = node;
                 node->setHeight(root->getHeight() + 1);
@@ -20,6 +21,7 @@ public:
                 this->addNode(node, root->right);
             }
         } else {
+            root->balanceFactor--;
             if (root->left == nullptr) {
                 root->left = node;
                 node->setHeight(root->getHeight() + 1);

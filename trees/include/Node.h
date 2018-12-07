@@ -43,6 +43,7 @@ public:
 
     Node<T> *left = nullptr;
     Node<T> *right = nullptr;
+    int balanceFactor = 0;
 
 private:
     T value;
