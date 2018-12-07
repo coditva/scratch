@@ -19,7 +19,17 @@ int main(int argc, char *argv[])
         tree.addNode(new Node<int>(node));
     }
 
+    std::cout << std::endl << "inorder:" << std::endl;
     tree.doInOrder(print);
+
+    std::cout << std::endl << "preorder:" << std::endl;
+    tree.doPreOrder(print);
+
+    std::cout << std::endl << "postorder:" << std::endl;
+    tree.doPostOrder(print);
+
+    std::cout << std::endl << "levelorder:" << std::endl;
+    tree.doLevelOrder(print);
 
     std::cout << std::endl;
     return 0;

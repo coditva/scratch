@@ -16,6 +16,7 @@ public:
                 root->right = node;
                 this->num_of_nodes++;
             } else {
+                root->incHeight(1);
                 this->addNode(node, root->right);
             }
         } else {
@@ -23,6 +24,7 @@ public:
                 root->left = node;
                 this->num_of_nodes++;
             } else {
+                root->incHeight(1);
                 this->addNode(node, root->left);
             }
         }
@@ -34,6 +36,7 @@ public:
             this->root = node;
             this->num_of_nodes++;
         } else {
+            this->root->incHeight(1);
             this->addNode(node, this->root);
         }
     }

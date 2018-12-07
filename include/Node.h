@@ -5,11 +5,15 @@ template <class T = unsigned int>
 class Node
 {
 public:
-    Node () { }
+    Node ()
+    {
+        this->height = 0;
+    }
 
     Node (T value)
     {
         this->value = value;
+        this->height = 1;
     }
 
     T getValue()
@@ -22,11 +26,27 @@ public:
         this->value = value;
     }
 
+    unsigned int getHeight()
+    {
+        return this->height;
+    }
+
+    void setHeight(unsigned int height)
+    {
+        this->height = height;
+    }
+
+    void incHeight(int increment)
+    {
+        this->height += increment;
+    }
+
     Node<T> *left = nullptr;
     Node<T> *right = nullptr;
 
 private:
     T value;
+    unsigned int height = 0;
 };
 
 #endif /* end of include guard: NODE_H_TCJS7ZWP */

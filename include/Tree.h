@@ -1,6 +1,7 @@
 #ifndef TREE_H_I37DWHC8
 #define TREE_H_I37DWHC8
 
+#include <queue>
 #include "Node.h"
 
 template <class T = unsigned int>
@@ -23,6 +24,64 @@ public:
         doInOrder(node->left, callback);
         callback(node->getValue());
         doInOrder(node->right, callback);
+    }
+
+    void doPreOrder(Callback *callback)
+    {
+        this->doPreOrder(this->root, callback);
+    }
+
+    void doPreOrder(Node<T> *node, Callback *callback)
+    {
+        if (node == nullptr) {
+            return;
+        }
+
+        callback(node->getValue());
+        doPreOrder(node->left, callback);
+        doPreOrder(node->right, callback);
+    }
+
+    void doPostOrder(Callback *callback)
+    {
+        this->doPostOrder(this->root, callback);
+    }
+
+    void doPostOrder(Node<T> *node, Callback *callback)
+    {
+        if (node == nullptr) {
+            return;
+        }
+
+        doPostOrder(node->left, callback);
+        doPostOrder(node->right, callback);
+        callback(node->getValue());
+    }
+
+    void doLevelOrder(Callback *callback)
+    {
+        this->doLevelOrder(this->root, callback);
+    }
+
+    void doLevelOrder(Node<T> *node, Callback *callback)
+    {
+        if (node == nullptr) {
+            return;
+        }
+
+        std::queue<Node<T> *> q;
+        q.push(node);
+        while (!q.empty()) {
+            Node<T> *current_node = q.front();
+            if (current_node->left) {
+                q.push(current_node->left);
+            }
+            if (current_node->right) {
+                q.push(current_node->right);
+            }
+            callback(current_node->getValue());
+            q.pop();
+        }
     }
 
 protected:
