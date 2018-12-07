@@ -5,13 +5,13 @@ INC_DIR    = include
 
 .PHONY: all
 
-all: $(TARGET)
+all: $(TARGET).bin
 
-$(TARGET): $(TARGET).o
+$(TARGET).bin: $(TARGET).o
 	$(CC) $(CC_FLAGS) -o $@ $?
 
 $(TARGET).o: src/$(TARGET).cc $(INC_DIR)/*
 	$(CC) -I$(INC_DIR) $(CC_FLAGS) -c $<
 
 clean:
-	rm -rf $(TARGET) $(TARGET).o
+	rm -rf $(TARGET).bin $(TARGET).o
