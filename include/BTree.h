@@ -3,7 +3,7 @@
 
 #include "Tree.h"
 
-template <class T>
+template <class T = unsigned int>
 class BTree: public Tree<T>
 {
 public:

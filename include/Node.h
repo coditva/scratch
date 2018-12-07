@@ -1,7 +1,7 @@
 #ifndef NODE_H_TCJS7ZWP
 #define NODE_H_TCJS7ZWP
 
-template <class T>
+template <class T = unsigned int>
 class Node
 {
 public:

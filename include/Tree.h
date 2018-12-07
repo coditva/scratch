@@ -3,7 +3,7 @@
 
 #include "Node.h"
 
-template <class T>
+template <class T = unsigned int>
 class Tree
 {
 public:
