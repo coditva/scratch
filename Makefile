@@ -7,11 +7,14 @@ INC_DIR    = include
 
 all: $(TARGET).bin
 
-$(TARGET).bin: $(TARGET).o
-	$(CC) $(CC_FLAGS) -o $@ $?
+$(TARGET).bin: src/$(TARGET).o
+	$(CC) $(CC_FLAGS) -o $@ $<
 
-$(TARGET).o: src/$(TARGET).cc $(INC_DIR)/*
-	$(CC) -I$(INC_DIR) $(CC_FLAGS) -c $<
+src/$(TARGET).o: src/$(TARGET).cc $(INC_DIR)/*
+	$(CC) -I$(INC_DIR) $(CC_FLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(TARGET).bin $(TARGET).o
+	rm `find \
+        -name "*.bin"   -o \
+        -name "*.o"     -o \
+        -name "*.gch" `
